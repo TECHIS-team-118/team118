@@ -24,4 +24,8 @@ Route::get('/home', function () {
 
 Auth::routes();
 
+Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
+Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('home');
 
