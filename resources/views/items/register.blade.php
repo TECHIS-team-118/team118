@@ -13,6 +13,10 @@
   <input type="name" class="form-control " name="name" value="">
 </div>
 <div class="mb-3 test">
+  <label for="exampleFormControlInput1" class="form-label">状態</label>
+  <input type="text" class="form-control " name="text" value="" >
+</div>
+<div class="mb-3 test">
 <label for="exampleFormControlInput1" class="form-label">種別</label>
   <input type="text" class="form-control " name="text" value="" >
 </div>
