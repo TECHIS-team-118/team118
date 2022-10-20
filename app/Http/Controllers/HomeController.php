@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+
     public function index()
     {
-        return view('home');
+        $id = Auth::id();
+        $items = Item::where('user_id','=', $id )->get();
+        return view('home',compact('items'));
     }
 }

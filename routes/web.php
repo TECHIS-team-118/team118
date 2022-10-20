@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 // この中はログイン必須。
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/home', function () {
-        return view('home');
-    });
+    Route::get('/home',[HomeController::class, 'index'])->name('home');
     Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
     Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
     Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
