@@ -18,8 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[HomeController::class, 'index'])->name('home');
-
 Auth::routes();
 
+// この中はログイン必須。
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home',[HomeController::class, 'index'])->name('home');
+    Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
+    Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+    Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+    Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('home');
+});
 
