@@ -17,15 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/home', function () {
-    return view('home');
-});
-
 Auth::routes();
 
-Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
-Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
-Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
-Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('home');
+
+// この中はログイン必須。
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', function () {
+        return view('home');
+    });
+    Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
+    Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+    Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
+    Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('home');
+});
 
