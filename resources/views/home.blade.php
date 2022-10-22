@@ -19,6 +19,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">名前</th>
                 <th scope="col">商品状態</th>
                 <th scope="col">タイプ</th>
                 <th scope="col">詳細</th>
@@ -29,6 +30,7 @@
         @foreach($items as $index=>$item)
         <tr>
             <th scope="row">{{$index+1}}</th>
+            <td>{{ $item->name }}</td>
             <td>{{ $item->status }}</td>
             <td>{{ $item->type }}</td>
             <td>{{ $item->detail }}</td>
@@ -37,6 +39,6 @@
         @endforeach    
         </tbody>
     </table>
-{{-- <a href="{{ route('items.index') }}">商品一覧画面</a> --}}
+    <a class="btn primary" href="{{ route('items.list') }}">商品一覧画面</a> 
 </div>
 @endsection
