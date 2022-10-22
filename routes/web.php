@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 // この中はログイン必須。
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('/',[ItemController::class, 'index'])->name('items.list');
     Route::get('/home',[HomeController::class, 'index'])->name('home');
-    Route::post('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('home');
-    Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
-    Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('home');
-    Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('home');
+    Route::post('/register', [HomeController::class, 'register'])->name('home');
+    Route::get('/items/register', [ItemController::class, 'register'])->name('home');
+    Route::post('/items/register', [ItemController::class, 'register'])->name('home');
+    Route::post('/items/edit', [ItemController::class, 'edit'])->name('home');
 });
 

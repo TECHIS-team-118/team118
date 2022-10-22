@@ -14,20 +14,25 @@ class ItemController extends Controller
     */
     
 
- public function register(Request $request)
-    {  
-        
-        return view('items.register');
+    public function index(){
+        $items = Item::all();
+        return view('items.index',compact('items'));
     }
-    //商品登録
- public function postRegister(Request $request)
-    {
-        Item::create([
-         'name'=>$request->name,
-         'status'=>$request->status,
-         'type'=>$request->type,
-         'detail'=>$request->detail,
-        ]);
-        return redirect()->route('items');
-    }   
+
+    public function register(Request $request)
+        {  
+            
+            return view('items.register');
+        }
+        //商品登録
+    public function postRegister(Request $request)
+        {
+            Item::create([
+            'name'=>$request->name,
+            'status'=>$request->status,
+            'type'=>$request->type,
+            'detail'=>$request->detail,
+            ]);
+            return redirect()->route('items');
+        }   
 }
