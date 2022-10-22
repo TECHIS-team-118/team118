@@ -34,7 +34,7 @@
             <td>{{ $item->status }}</td>
             <td>{{ $item->type }}</td>
             <td>{{ $item->detail }}</td>
-            <td><a href="" class="btn btn-primary">編集</a></td>
+            <td><a href="{{route('items.edit',$item->id)}}" class="btn btn-primary">編集</a></td>
         </tr>
         @endforeach    
         </tbody>

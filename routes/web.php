@@ -21,9 +21,15 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/',[ItemController::class, 'index'])->name('items.list');
     Route::get('/home',[HomeController::class, 'index'])->name('home');
-    Route::post('/register', [App\Http\Controllers\HomeController::class, 'register']);
-    Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register']);
-    Route::post('/items/register', [App\Http\Controllers\ItemController::class, 'register']);
-    Route::post('/items/edit', [App\Http\Controllers\ItemController::class, 'edit']);
+    //登録ボタン押された時
+    Route::post('/register', [App\Http\Controllers\ItemController::class, 'create'])->name('items.create');
+    //登録画面を返す
+    Route::get('/items/register', [App\Http\Controllers\ItemController::class, 'register'])->name('items.register');
+    //編集ボタンを押された時
+    Route::post('/items/edit/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
+    //編集画面を返す
+    Route::get('/items/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
+    
 });
+
 
