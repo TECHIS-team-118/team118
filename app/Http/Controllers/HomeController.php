@@ -29,12 +29,12 @@ class HomeController extends Controller
         $id = Auth::id();
         $keyword = $request->input('keyword');
         $query = Item::query();
+        $query->where('user_id','=', $id );
    
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%$keyword%")
             ->orWhere('detail', 'LIKE', "%$keyword%");
         }
-        $query->where('user_id','=', $id );
       
         $items = $query->get();
        

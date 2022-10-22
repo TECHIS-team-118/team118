@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <a class="navbar-brand">商品一覧</a>
             <form action="{{route('home')}}" method="GET" class="d-flex">
-            <input type="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" value="{{$keyword}}">
+                <input type="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" value="{{$keyword}}">
             <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -39,6 +39,6 @@
         @endforeach    
         </tbody>
     </table>
-    <a class="btn primary" href="{{ route('items.list') }}">商品一覧画面</a> 
+    
 </div>
 @endsection
