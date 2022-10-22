@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">HOME</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="btn primary" href="{{ route('items.list') }}">商品一覧画面</a> 
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

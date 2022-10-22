@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <a class="navbar-brand">商品一覧</a>
             <form action="{{route('home')}}" method="GET" class="d-flex">
-            <input type="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" value="{{$keyword}}">
+                <input type="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" value="{{$keyword}}">
             <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -19,6 +19,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">名前</th>
                 <th scope="col">商品状態</th>
                 <th scope="col">タイプ</th>
                 <th scope="col">詳細</th>
@@ -29,14 +30,15 @@
         @foreach($items as $index=>$item)
         <tr>
             <th scope="row">{{$index+1}}</th>
+            <td>{{ $item->name }}</td>
             <td>{{ $item->status }}</td>
             <td>{{ $item->type }}</td>
             <td>{{ $item->detail }}</td>
-            <td><a href="" class="btn btn-primary">編集</a></td>
+            <td><a href="{{route('items.edit',$item->id)}}" class="btn btn-primary">編集</a></td>
         </tr>
         @endforeach    
         </tbody>
     </table>
-{{-- <a href="{{ route('items.index') }}">商品一覧画面</a> --}}
+    
 </div>
 @endsection
