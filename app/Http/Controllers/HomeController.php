@@ -23,10 +23,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function index(Request $request)
     {
         $id = Auth::id();
-        $items = Item::where('user_id','=', $id )->get();
-        return view('home',compact('items'));
+        $keyword = $request->input('keyword');
+        $query = Item::query();
+   
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%$keyword%")
+            ->orWhere('detail', 'LIKE', "%$keyword%");
+        }
+        $query->where('user_id','=', $id );
+      
+        $items = $query->get();
+       
+        return view('home',compact('items','keyword'));
     }
 }
