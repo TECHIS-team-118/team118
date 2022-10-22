@@ -14,14 +14,23 @@ class ItemController extends Controller
     */
     
 
-    public function index(){
+    public function index(Request $request){
         $items = Item::all();
-        return view('items.index',compact('items'));
+
+        $keyword = $request->input('keyword');
+        $query = Item::query();
+
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%$keyword%")
+            ->orWhere('detail', 'LIKE', "%$keyword%");
+        }
+        $items = $query->get();
+        return view('items.index',compact('items','keyword'));
+
     }
 
     public function register(Request $request)
         {  
-            
             return view('items.register');
         }
         //商品登録
