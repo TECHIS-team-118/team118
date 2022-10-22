@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>ホーム画面</h1>
+    <h1>商品一覧画面</h1>
     <div class="pb-3 d-grid gap-2 d-md-flex justify-content-md-end">
         <a class="btn btn-primary" href="#" role="button">新規登録</a>
     </div>
