@@ -29,5 +29,5 @@ class ItemController extends Controller
          'detail'=>$request->detail,
         ]);
         return redirect()->route('items');
-    }   
+    }
 }
