@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller{
   
-    public function index(){
+    public function index(Request $request){
         $items = Item::all();
 
         $keyword = $request->input('keyword');
